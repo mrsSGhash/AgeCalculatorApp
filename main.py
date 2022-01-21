@@ -24,6 +24,9 @@ def get_age():
     tbox_age.insert(tk.END,age)
     tbox_age.config(state='disabled')
 
+def exit():
+    window.destroy()
+
 # ____________   MAIN  ________________
 # Create a object which stores today’s whole date using datetime function
 today = date.today()
@@ -50,7 +53,7 @@ e_month = tk.Entry(window,width=5)
 e_year = tk.Entry(window,width=5)
 
 # Button to calculate age 
-btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command=get_age)
+btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command='get_age')
  
 # Label for text box that will display the calculated age
 lb_calculated_age = tk.Label(window,text="The Calculated Age is: ",font=('Arial',12,"bold"),fg="darkgreen",bg="#F7DC6F")
