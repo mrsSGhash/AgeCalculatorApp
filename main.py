@@ -9,6 +9,20 @@ from datetime import date
 import tkinter as tk
 
 # ____________   FUNCTIONS ________________
+def get_age():
+    # gets the three entries
+    d= int(e_date.get())
+    m=int(e_month.get())
+    y=int(e_year.get())
+
+    # find the age ( difference between current and date of birth )
+    age = today.year-y-((today.month, today.day)<(m,d))
+    tbox_age.config(state='normal')
+
+    #age calculated is inserted into the text box after clearing the previous info in the textbox. 
+    tbox_age.delete('1.0', tk.END)
+    tbox_age.insert(tk.END,age)
+    tbox_age.config(state='disabled')
 
 # ____________   MAIN  ________________
 # Create a object which stores today’s whole date using datetime function
