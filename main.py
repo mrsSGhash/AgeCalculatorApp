@@ -8,6 +8,9 @@ from datetime import date
 # used to create a custom window for age calculator
 import tkinter as tk
 
+# ____________   FUNCTIONS ________________
+
+# ____________   MAIN  ________________
 # Create a object which stores today’s whole date using datetime function
 today = date.today()
 
