@@ -15,8 +15,15 @@ def get_age():
     m=int(e_month.get())
     y=int(e_year.get())
 
+    calc_age = find_age(d, m, y)
+    display_calc_age(calc_age)
+
+def find_age(d, m, y):
     # find the age ( difference between current and date of birth )
     age = today.year-y-((today.month, today.day)<(m,d))
+    return age
+
+def display_calc_age(age):
     tbox_age.config(state='normal')
 
     #age calculated is inserted into the text box after clearing the previous info in the textbox. 
@@ -53,7 +60,7 @@ e_month = tk.Entry(window,width=5)
 e_year = tk.Entry(window,width=5)
 
 # Button to calculate age 
-btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command='get_age')
+btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command=get_age)
  
 # Label for text box that will display the calculated age
 lb_calculated_age = tk.Label(window,text="The Calculated Age is: ",font=('Arial',12,"bold"),fg="darkgreen",bg="#F7DC6F")
