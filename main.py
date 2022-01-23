@@ -43,7 +43,7 @@ def validation():
       elif any(ch.isdigit() for ch in y) == False:
         msg = 'year must be a NUMBER'
       else:
-        msg = 'Success!'
+       # msg = 'Success!'
         day = int(d)
         month = int(m)
         year = int(y)
