@@ -7,16 +7,9 @@ Date: 22/01/2022
 from datetime import date
 # used to create a custom window for age calculator
 import tkinter as tk
+from tkinter import messagebox
 
 # ____________   FUNCTIONS ________________
-def get_age():
-    # gets the three entries
-    d= int(e_date.get())
-    m=int(e_month.get())
-    y=int(e_year.get())
-
-    calc_age = find_age(d, m, y)
-    display_calc_age(calc_age)
 
 def find_age(d, m, y):
     # find the age ( difference between current and date of birth )
@@ -30,6 +23,37 @@ def display_calc_age(age):
     tbox_age.delete('1.0', tk.END)
     tbox_age.insert(tk.END,age)
     tbox_age.config(state='disabled')
+
+def validation():
+  # gets the three entries
+  d = e_date.get()
+  m = e_month.get()
+  y = e_year.get()
+  
+  msg = ''
+
+  if len(d) == 0 or len(m) == 0 or len (y) == 0:
+      msg = 'day, month and year can\'t be empty'
+  else:
+    try:
+      if any(ch.isdigit() for ch in d) == False:
+        msg = 'day must be a NUMBER'
+      elif any(ch.isdigit() for ch in m) == False:
+        msg = 'month must be a NUMBER'
+      elif any(ch.isdigit() for ch in y) == False:
+        msg = 'year must be a NUMBER'
+      else:
+        msg = 'Success!'
+        day = int(d)
+        month = int(m)
+        year = int(y)
+        calc_age = find_age(day, month, year)
+        display_calc_age(calc_age)
+            
+    except Exception as ep:
+      messagebox.showerror('error', ep)
+      
+  messagebox.showinfo('message', msg)
 
 def exit():
     window.destroy()
@@ -60,7 +84,7 @@ e_month = tk.Entry(window,width=5)
 e_year = tk.Entry(window,width=5)
 
 # Button to calculate age 
-btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command=get_age)
+btn_calculate_age = tk.Button(window,text="Calculate Age!",font=("Arial",13), command=validation)
  
 # Label for text box that will display the calculated age
 lb_calculated_age = tk.Label(window,text="The Calculated Age is: ",font=('Arial',12,"bold"),fg="darkgreen",bg="#F7DC6F")
